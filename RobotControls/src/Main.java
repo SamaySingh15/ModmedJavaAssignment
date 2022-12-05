@@ -1,3 +1,7 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.nio.Buffer;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -9,6 +13,20 @@ public class Main {
         int col= 0;
 
         Scanner sc = new Scanner(System.in);
+
+       /* try {
+            ArrayList<Character> al = new ArrayList<Character>();
+            FileReader fr = new FileReader("sample.txt");
+            BufferedReader br = new BufferedReader(fr);
+            String str;
+            while((str=br.readLine())!=null){
+                al.add(str.charAt(0));
+            }
+
+        }
+        catch(IOException e){
+            e.printStackTrace();
+        } */
 
 
         System.out.println("please Choose from the Types of Drive");

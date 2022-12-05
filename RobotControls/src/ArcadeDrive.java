@@ -32,8 +32,24 @@ public class ArcadeDrive implements SingleDrives {
                 }
             }
             else if(move=='L'){
-                row=row-1;
-                col=col+1;
+                if(direction=='E'){
+                    row=row-1;
+                    col=col+1;
+                }
+                else if(direction=='W'){
+                    row=row+1;
+                    col=col-1;
+                }
+                else if(direction=='S'){
+                    col=col+1;
+                    row=row+1;
+                }
+                else{
+                    col=col-1;
+                    row=row-1;
+                }
+
+
                 if(direction=='E'){
                     direction='N';
                 }
@@ -46,12 +62,28 @@ public class ArcadeDrive implements SingleDrives {
                 else if(direction=='S'){
                     direction='E';
                 }
-
             }
 
             else if(move=='R'){
                 row=row+1;
                 col=col+1;
+
+                if(direction=='E'){
+                    row=row+1;
+                    col=col+1;
+                }
+                else if(direction=='W'){
+                    row=row-1;
+                    col=col-1;
+                }
+                else if(direction=='S'){
+                    col=col-1;
+                    row=row+1;
+                }
+                else{
+                    col=col+1;
+                    row=row-1;
+                }
 
                 if(direction=='E'){
                     direction='S';
