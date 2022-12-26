@@ -11,6 +11,10 @@ public class Payment {
     private LocalDateTime completeDate;
     private Boolean paymentStatus;
 
+    public Boolean getPaymentStatus() {
+        return paymentStatus;
+    }
+
     public Payment(String id , String ticketId , double amount){
         this.id=id;
         this.ticketId = ticketId;

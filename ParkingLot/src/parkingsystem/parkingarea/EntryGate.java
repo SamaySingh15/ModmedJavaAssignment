@@ -8,7 +8,7 @@ public class EntryGate {
         this.GateId=id;
     }
 
-    public Ticket generateParkingTicket(Vehicle vehicle){
+    public void generateParkingTicket(Vehicle vehicle){
 
     }
 

@@ -1,7 +1,7 @@
 package parkingsystem.parkingarea;
 
 public class CarParking extends ParkingSpot{
-    public CarParkingSpot(String id){
+    public CarParking(String id){
         super(id, ParkingSpotType.CAR);
     }
 

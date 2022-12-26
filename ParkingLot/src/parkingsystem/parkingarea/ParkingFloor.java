@@ -15,7 +15,9 @@ public class ParkingFloor {
     }
 
     private Map<String, ParkingSpot> usedParkingSpots = new HashMap<>();
-
+    public void setUsedParkingSpots(Map<String , ParkingSpot> spots){
+        this.usedParkingSpots = spots;
+    }
     public Map<String, ParkingSpot> getUsedParkingSpots() {
         return usedParkingSpots;
     }
@@ -29,7 +31,7 @@ public class ParkingFloor {
         parkingSpots.put(ParkingSpotType.PHYSICALLYCHALLENGE , new ArrayDeque<ParkingSpot>());
     }
     public Boolean isFloorFull(){
-
+            return true;
     }
 
 }
