@@ -3,6 +3,7 @@ package parkingsystem.accounts;
 import Exceptions.InvalidParkingFloorException;
 import parkingsystem.parkingarea.*;
 
+import java.util.List;
 import java.util.Optional;
 
 public class Admin extends UserAccount{
@@ -44,18 +45,47 @@ public class Admin extends UserAccount{
         Optional<ParkingFloor> pfloor = ParkingLot.getInstance().getParkingFloors().stream().filter(parkingFloor -> parkingFloor.getFloorId().equalsIgnoreCase(parkingFloorId)).findFirst();
 
         if(!pfloor.isPresent())
-            try{
+            try {
                 throw new InvalidParkingFloorException("this floor does not exists");
-            }
-            catch(InvalidParkingFloorException e){
+            } catch (InvalidParkingFloorException e) {
+                System.out.println("Wrong floor entered or Spot already exits");
                 e.printStackTrace();
             }
+
+
+        else{
+            System.out.println("adding spot to floor");
+            List<ParkingFloor> floors=ParkingLot.getInstance().getParkingFloors();
+            for(ParkingFloor pf: floors){
+                if(pf.getFloorId().equalsIgnoreCase(parkingFloorId)){
+                    pf.getParkingSpots().get(spot.getParkingSpotType()).add(spot);
+                }
+            }
+
+
+        }
     }
     public void addEntrance(EntryGate entrance){
-
+        List<EntryGate> egates = ParkingLot.getInstance().getEntryGates();
+        for(EntryGate e : egates){
+            if(e.getGateId()==entrance.getGateId()){
+                System.out.println("Gate already present");
+                return;
+            }
+        }
+        ParkingLot.getInstance().getEntryGates().add(entrance);
+        System.out.println("entry gate added successfully");
     }
     public void addExit(ExitGate exit){
-
+        List<ExitGate> egates = ParkingLot.getInstance().getExitGates();
+        for(ExitGate e : egates){
+            if(e.getGateId()==exit.getGateId()){
+                System.out.println("Gate already present");
+                return;
+            }
+        }
+        ParkingLot.getInstance().getExitGates().add(exit);
+        System.out.println("exit gate added successfully");
     }
 
 }

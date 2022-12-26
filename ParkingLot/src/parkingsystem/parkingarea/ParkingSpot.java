@@ -17,6 +17,11 @@ public class ParkingSpot{
     }
 
     private ParkingSpotType parkingSpotType;
+
+    public ParkingSpotType getParkingSpotType() {
+        return parkingSpotType;
+    }
+
     private String vehicleRegNo;
 
     public String getVehicleRegNo() {

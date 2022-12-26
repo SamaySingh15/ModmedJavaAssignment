@@ -1,9 +1,7 @@
 package parkingsystem;
 import parkingsystem.accounts.Admin;
 import parkingsystem.accounts.UserAccount;
-import parkingsystem.parkingarea.ExitGate;
-import parkingsystem.parkingarea.ParkingLot;
-import parkingsystem.parkingarea.Ticket;
+import parkingsystem.parkingarea.*;
 import parkingsystem.vehicle.VehicleCategory;
 
 import java.util.HashMap;
@@ -142,7 +140,45 @@ public class Main {
             }
             else{
                 System.out.println("Error! could not verify");
+                System.exit(0);
             }
+            System.out.println("Choose from the following options : \n 1) add floor to the ParkingLot \n 2 add ParkingSpot to the ParkingLot \n 3) add EntryGate to the ParkingLot \n 4) add ExitGate to the ParkingLot");
+            int choice = sc.nextInt();
+            if(choice==1){
+                int length = plot.getParkingFloors().size();
+                String floorId = "PFLOOR#"+(length+1);
+                adm.addFloor(floorId , new ParkingFloor(floorId));
+                System.out.println("Floor added succesfully");
+            }
+            else if(choice==2){
+                List<ParkingFloor> floors=ParkingLot.getInstance().getParkingFloors();
+                System.out.println("enter the type of spot");
+                String spot = sc.next();
+                System.out.println("enter the FloorId");
+                String parkingFloorId = sc.next();
+
+                for(ParkingFloor floor :floors){
+                    if(floor.getFloorId().equalsIgnoreCase(parkingFloorId)){
+                        int length = floor.getParkingSpots().get(ParkingSpotType.valueOf(spot)).size();
+                        String parkingSpotId = "PSPOT#"+(length+1);
+                        adm.addSpot(parkingFloorId , new ParkingSpot(parkingSpotId , ParkingSpotType.valueOf(spot)));
+                        System.out.println("floor addded successfully");
+                    }
+                }
+
+
+
+            }
+            else if(choice==3){
+                System.out.println("enter the floor Id : ");
+                String floorid = sc.next();
+                int length = plot.getEntryGates().size();
+                String gateId = "EGATE#"+(length+1);
+                EntryGate egate = new EntryGate(gateId);
+                adm.addEntrance(egate);
+
+            }
+
         }
 
     }
